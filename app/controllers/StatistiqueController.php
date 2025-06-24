@@ -9,18 +9,18 @@ class StatistiqueController {
 
     public static function showDashboard() {
         $statistiqueModel = new Statistique(Flight::db());
-        // Récupération de l'année (paramètre optionnel)
+        // Recuperation de l'annee (parametre optionnel)
         $year = Flight::request()->query->year ?? date('Y');
         // $year = 2025;
-        // Récupérer les données de vente par mois
+        // Recuperer les donnees de vente par mois
         $salesByMonth = $statistiqueModel->getSalesByMonth($year);
         
-        // Préparer les données pour le graphique
+        // Preparer les donnees pour le graphique
         $months = [];
         $sales = [];
         
         foreach ($salesByMonth as $data) {
-            // Convertir le numéro du mois en nom du mois en français
+            // Convertir le numero du mois en nom du mois en français
             $monthNum = $data['mois'];
             $dateObj = \DateTime::createFromFormat('!m', $monthNum);
             $monthName = $dateObj->format('F'); // Nom du mois en anglais
@@ -28,7 +28,7 @@ class StatistiqueController {
             // Traduction des mois en français
             $frenchMonths = [
                 'January' => 'Jan.',
-                'February' => 'Fév.',
+                'February' => 'Fev.',
                 'March' => 'Mars',
                 'April' => 'Avr.',
                 'May' => 'Mai',
@@ -38,19 +38,19 @@ class StatistiqueController {
                 'September' => 'Sept.',
                 'October' => 'Oct.',
                 'November' => 'Nov.',
-                'December' => 'Déc.'
+                'December' => 'Dec.'
             ];
             
             $months[] = $frenchMonths[$monthName];
             $sales[] = $data['total_ventes'];
         }
         
-        // Récupérer les autres données statistiques
+        // Recuperer les autres donnees statistiques
         $bestProducts = $statistiqueModel->getBestProduct();
         $topCustomers = $statistiqueModel->getTopCustomers();
         $chiffreAffaire = $statistiqueModel->getChiffreAffaire($year);
         
-        // Passer les données à la vue
+        // Passer les donnees a la vue
         Flight::render('template', [
             'page' => 'chart',
             'months' => json_encode($months),

@@ -4,7 +4,7 @@
         <input type="text" placeholder="Rechercher..." class="search-input">
         <select  class="sort-select">
             <option value="">Trier par</option>
-            <option value="nom">Nom Département</option>
+            <option value="nom">Nom Departement</option>
             <option value="date">Date</option>
             <option value="montant">Montant</option>
         </select>
@@ -16,7 +16,7 @@
     <table>
         <thead>
             <tr>
-                <th>Département</th>
+                <th>Departement</th>
                 <th>Action</th>
                 <th>Reaction</th>
                 <th>Date</th>

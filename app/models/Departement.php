@@ -32,7 +32,7 @@ use PDO;
             $this->nomDept = $nomDept;
         }
 
-        // Méthode de connexion
+        // Methode de connexion
         public static function login($nomDept, $mdp) {
             $sql = "SELECT * FROM Dept WHERE nomDept = ?";
             $conn = Flight::db();
@@ -42,9 +42,9 @@ use PDO;
 
             if ($dept && $dept['mdp'] == $mdp) {
                 $departement = new Departement($dept['idDept'], $dept['nomDept']);
-                return $departement; // Connexion réussie
+                return $departement; // Connexion reussie
             }
-            return null; // Échec de connexion
+            return null; // echec de connexion
         }
 
         public static function getDepartementByName($nom) {
@@ -77,27 +77,27 @@ use PDO;
             $db = Flight::db();
             $stmt = $db->prepare("SELECT * FROM Dept");
             $stmt->execute();
-            $data = $stmt->fetchAll(); // Récupérer tous les résultats
+            $data = $stmt->fetchAll(); // Recuperer tous les resultats
         
             $departements = [];
             foreach ($data as $row) {
                 $departements[] = new Departement($row['idDept'], $row['nomDept']);
             }
         
-            return $departements; // Retourne une liste de départements
+            return $departements; // Retourne une liste de departements
         }
 
         public static function getAllDept($idDept) {
             $db = Flight::db();
             $stmt = $db->prepare("SELECT de.idDept,de.nomDept FROM Dept as de JOIN Droit as dr on dr.idDeptFils = de.idDept WHERE idDeptPere = ?");
             $stmt->execute([$idDept]);
-            $data = $stmt->fetchAll(); // Récupérer tous les résultats
+            $data = $stmt->fetchAll(); // Recuperer tous les resultats
         
             $departements = [];
             foreach ($data as $row) {
                 $departements[] = new Departement($row['idDept'], $row['nomDept']);
             }
-            return $departements; // Retourne une liste de départements
+            return $departements; // Retourne une liste de departements
         }
 
         public static function getDroit($idDepartPere, $idDepartFils) {
@@ -119,11 +119,11 @@ use PDO;
             $stmt->execute([$this->getIdDept()]);
             $solde = $stmt->fetch(PDO::FETCH_ASSOC);
         
-            // Vérifier si un solde a été trouvé, sinon retourner 0
+            // Verifier si un solde a ete trouve, sinon retourner 0
             if ($solde) {
                 return $solde['montant'];
             } else {
-                return 0;  // Valeur par défaut si aucun solde n'est trouvé
+                return 0;  // Valeur par defaut si aucun solde n'est trouve
             }
         }
         

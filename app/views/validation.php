@@ -4,7 +4,7 @@
         <input type="text" placeholder="Rechercher..." class="search-input">
         <select  class="sort-select">
             <option value="">Trier par</option>
-            <option value="nom">Nom Département</option>
+            <option value="nom">Nom Departement</option>
             <option value="date">Date</option>
             <option value="montant">Montant</option>
         </select>
@@ -16,10 +16,10 @@
     <table>
         <thead>
             <tr>
-                <th>Département</th>
+                <th>Departement</th>
                 <th>Rubrique</th>
                 <th>Date</th>
-                <th>Recette/Dépense</th>
+                <th>Recette/Depense</th>
                 <th>Montant</th>
                 <th class="thAction">Action</th>
             </tr>
@@ -30,7 +30,7 @@
                     <td><?= htmlspecialchars($validation['nomDept']) ?></td>
                     <td><?= htmlspecialchars($validation['nomRubrique']) ?></td>
                     <td><?= htmlspecialchars($validation['date']) ?></td>
-                    <td><?= $validation['recetteOuDepense'] == 0 ? "Recette" : "Dépense" ?></td>
+                    <td><?= $validation['recetteOuDepense'] == 0 ? "Recette" : "Depense" ?></td>
                     <td><?= number_format($validation['montant'], 2, ',', ' ') ?> MGA</td>
                     <td class="action-buttons">
                         <a href="#"><button class="edit-btn">Details</button></a>

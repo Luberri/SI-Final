@@ -1,9 +1,9 @@
 <div class="navigationTable">
-    <h1>Fiche Budgétaire
+    <h1>Fiche Budgetaire
     </h1>
     <div class="controls">
         <form id="myForm" action="budget" method="post">
-            <label for="dateDeb">Début :</label>
+            <label for="dateDeb">Debut :</label>
             <input type="date" name="dateDeb" id="dateDeb">
 
             <label for="dateFin">Fin :</label>
@@ -34,7 +34,7 @@
 </div>
 <section class="budgetSection">
     <div class="enTeteTable">
-        <button class="prev" id="openPopUpPrev"><i class="fas fa-plus-circle"></i> Ajout Prévision</button>
+        <button class="prev" id="openPopUpPrev"><i class="fas fa-plus-circle"></i> Ajout Prevision</button>
         <!-- Pagination Controls -->
         <div id="paginationControls">
             <h2>
@@ -43,12 +43,12 @@
                 }
                 ?></h2>
             <div class="direction">
-                <button id="prevPage" onclick="changePage(-1)"> <i class="fas fa-arrow-left"></i><span>Précédent</span></button>
+                <button id="prevPage" onclick="changePage(-1)"> <i class="fas fa-arrow-left"></i><span>Precedent</span></button>
                 <span id="pageNumber">Page 1</span>
                 <button id="nextPage" onclick="changePage(1)"><span>Suivant</span><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
-        <button class="real" id="openPopUpReal"><i class="fas fa-check-circle"></i> Ajout Réalisation</button>
+        <button class="real" id="openPopUpReal"><i class="fas fa-check-circle"></i> Ajout Realisation</button>
     </div>
 
     <!-- Conteneur des tables pour pagination -->
@@ -64,9 +64,9 @@
                         <th colspan="3"><?= $table['mois'] ?></th>
                     </tr>
                     <tr>
-                        <th>Prévision</th>
-                        <th>Réalisation</th>
-                        <th>Écart</th>
+                        <th>Prevision</th>
+                        <th>Realisation</th>
+                        <th>ecart</th>
                     </tr>
                     
                     <tr class="numberRow">

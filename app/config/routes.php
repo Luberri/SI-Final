@@ -14,6 +14,8 @@ use app\controllers\DepartementController;
 use app\controllers\StatistiqueController;
 use app\controllers\validationCRMController;
 use app\controllers\TicketController;
+use app\controllers\UserController;     
+use app\controllers\DolibarrController;
 
 
 /** 
@@ -25,6 +27,12 @@ $valeurController = new ValeurController();
 $router->post('/saveRealisation', [$valeurController, 'saveRealisation']);
 $router->post('/savePrevision', [$valeurController, 'savePrevision']);
 $router->post('/saveCRM', [$valeurController, 'saveCRM']);
+
+
+
+$dolibarrController = new DolibarrController();
+$router->get('/dolibarr', [$dolibarrController, 'listProducts']);
+
 
 
 $departementController = new DepartementController();
@@ -77,3 +85,6 @@ Flight::route('/chart', function() use ($StatController) {
 Flight::route('/api/ventes-par-mois', function() use ($StatController) {
     $StatController->getSalesByMonthJson();
 });
+
+Flight::route('GET|POST /ajoutTicket', ['\app\controllers\TicketController','ajoutTicket']);
+Flight::route('GET  ', ['\app\controllers\TicketController','listeTickets']);

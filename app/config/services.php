@@ -10,7 +10,7 @@ use flight\debug\database\PdoQueryCapture;
 use Tracy\Debugger;
 use app\models\ProductModel;
 use app\models\Statistique;
-
+use app\models\DolibarrModel;
 /** 
  * @var array $config This comes from the returned array at the bottom of the config.php file
  * @var Engine $app

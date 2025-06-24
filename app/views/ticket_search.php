@@ -93,10 +93,10 @@
         <select name="statut">
             <option value="">Tous statuts</option>
             <option value="ouvert" <?= ($selectedStatut == 'ouvert') ? 'selected' : '' ?>>Ouvert</option>
-            <option value="ferme" <?= ($selectedStatut == 'ferme') ? 'selected' : '' ?>>Fermé</option>
+            <option value="ferme" <?= ($selectedStatut == 'ferme') ? 'selected' : '' ?>>Ferme</option>
         </select>
         <select name="priorite">
-            <option value="">Toutes priorités</option>
+            <option value="">Toutes priorites</option>
             <option value="basse" <?= ($selectedPriorite == 'basse') ? 'selected' : '' ?>>Basse</option>
             <option value="moyenne" <?= ($selectedPriorite == 'moyenne') ? 'selected' : '' ?>>Moyenne</option>
             <option value="haute" <?= ($selectedPriorite == 'haute') ? 'selected' : '' ?>>Haute</option>
@@ -111,7 +111,7 @@
                 <th>Client</th>
                 <th>Instruction</th>
                 <th>Date</th>
-                <th>Priorité</th>
+                <th>Priorite</th>
                 <th>Statut</th>
             </tr>
         </thead>

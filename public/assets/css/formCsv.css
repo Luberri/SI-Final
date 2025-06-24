@@ -7,12 +7,12 @@
   z-index: 1001;
   width: 28vw;
   display: none;
-  /* Centrage de l'élément */
+  /* Centrage de l'element */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Légère élévation */
+  /* Legere elevation */
   transition: transform 0.2s ease-in-out;
 }
 .csvForm fieldset {

@@ -12,7 +12,7 @@ class BudgetController
 {
    public function getBudget()
    {
-      // Récupérer les données du formulaire
+      // Recuperer les donnees du formulaire
       $dateDeb = Flight::request()->data->dateDeb;
       $dateFin = Flight::request()->data->dateFin;
       $idDept = Flight::request()->data->idDept;
@@ -23,34 +23,34 @@ class BudgetController
          Flight::redirect('/login');
       }
 
-      // Vérifier si toutes les données sont bien remplies
+      // Verifier si toutes les donnees sont bien remplies
       if (!empty($dateDeb) && !empty($dateFin) && !empty($idDept) && !empty($intervalle)) {
 
-         // Récupérer la liste des départements
+         // Recuperer la liste des departements
          $departements = Departement::getAllDept($_SESSION['idDept']);
 
-         // Générer les débuts de mois entre les dates fournies
+         // Generer les debuts de mois entre les dates fournies
          $moisDebuts = AffichageBudjetPeriode::getDebutsDeMois($dateDeb, $dateFin);
 
-         // Initialiser les données des tables
+         // Initialiser les donnees des tables
          $tablesData = [];
          // $budgetInitial = Departement::getDepartementById($idDept)->getSoldeInitial()['montant'];
          $soldeModel = new Solde();
-         $budgetInitial = $soldeModel->getSolde($_SESSION['idDept'], $dateDeb); // Récupérer le solde initial
+         $budgetInitial = $soldeModel->getSolde($_SESSION['idDept'], $dateDeb); // Recuperer le solde initial
 
 
-         // Pour chaque mois généré, récupérer les données
+         // Pour chaque mois genere, recuperer les donnees
          foreach ($moisDebuts as $index => $mois) {
             $moisFormat = date('Y-m', strtotime($mois)); // Format du mois (YYYY-MM)
 
-            // Appeler la fonction pour récupérer les données du budget par mois et année
+            // Appeler la fonction pour recuperer les donnees du budget par mois et annee
             $budgetData = AffichageBudjetPeriode::getBudgetByMonthYear($idDept, date('m', strtotime($mois)), date('Y', strtotime($mois)));
 
-            // Appeler la fonction pour récupérer les totaux des recettes et dépenses
+            // Appeler la fonction pour recuperer les totaux des recettes et depenses
             $realisationTotal = AffichageBudjetPeriode::getRealisationTotalByMonthYear($idDept, date('m', strtotime($mois)), date('Y', strtotime($mois)));
 
-            // Préparer les données à afficher
-            // Ajouter les totaux à chaque mois
+            // Preparer les donnees a afficher
+            // Ajouter les totaux a chaque mois
             $tablesData[$index] = [
                'mois' => date('F Y', strtotime($mois)), // Format lisible du mois
                'data' => $budgetData,
@@ -60,13 +60,13 @@ class BudgetController
            ];
          }
 
-         // Envoi des données à la vue
+         // Envoi des donnees a la vue
          $data = ['page' => 'budget', 'tablesData' => $tablesData, 'departements' => $departements,'soldeInitial' => $budgetInitial,'datDeb' => $dateDeb,'dateFin' => $dateFin,'types' => $types];
          Flight::render('template', $data);
          return;
       }
 
-      // Si les données sont incomplètes, on affiche la page sans tableau
+      // Si les donnees sont incompletes, on affiche la page sans tableau
       $departements = Departement::getAllDept($_SESSION['idDept']);
       $data = ['page' => 'budget', 'departements' => $departements,'types' => $types];
       Flight::render('template', $data);

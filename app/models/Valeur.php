@@ -24,7 +24,7 @@ class Valeur {
         $this->setDate($date);
         $this->setValidation($validation);
         $this->setIdDept($idDept);
-        $this->conn = Flight::db();  // Connexion à la base de données
+        $this->conn = Flight::db();  // Connexion a la base de donnees
     }
 
     // Getters et Setters
@@ -93,7 +93,7 @@ class Valeur {
         $this->idDept = $idDept;
     }
 
-    // Méthode pour sauvegarder ou insérer la valeur dans la base de données
+    // Methode pour sauvegarder ou inserer la valeur dans la base de donnees
     public function insert() {
         $sql = "INSERT INTO Valeur (nomRubrique, idType, previsionOuRealisation, montant, date, validation, idDept) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -112,7 +112,7 @@ class Valeur {
     public static function gestionPrevisionRealisation($previsionOuRealisation) {
     // Convertir en minuscule et supprimer les espaces superflus
     $previsionOuRealisation = strtolower(trim($previsionOuRealisation));
-    // Convertir les caractères accentués en leur équivalent non accentué
+    // Convertir les caracteres accentues en leur equivalent non accentue
     $previsionOuRealisation = iconv('UTF-8', 'ASCII//TRANSLIT', $previsionOuRealisation);
 
     if ($previsionOuRealisation === "prevision" || $previsionOuRealisation === "1") {
@@ -149,26 +149,26 @@ class Valeur {
                 // 🔍 Conversion nomType → idType
                 $type = Type::getTypeByName($row['nomType'] ?? '');
                 if (!$type) {
-                    echo "⚠️ Erreur : Type inconnu ({$row['nomType']}). Vérifiez la base de données.\n";
-                    continue; // Passer à la ligne suivante
+                    echo "⚠️ Erreur : Type inconnu ({$row['nomType']}). Verifiez la base de donnees.\n";
+                    continue; // Passer a la ligne suivante
                 }
                 $row['idType'] = $type->getIdType();
 
                 // 🔍 Conversion nomDept → idDept
                 $departement = Departement::getDepartementByName($row['nomDept'] ?? '');
                 if (!$departement) {
-                    echo "⚠️ Erreur : Département inconnu ({$row['nomDept']}). Vérifiez la base de données.\n";
-                    continue; // Passer à la ligne suivante
+                    echo "⚠️ Erreur : Departement inconnu ({$row['nomDept']}). Verifiez la base de donnees.\n";
+                    continue; // Passer a la ligne suivante
                 }
                 $row['idDept'] = $departement->getIdDept();
 
-                // 🔍 Vérification avant insertion
+                // 🔍 Verification avant insertion
                 if (empty($row['idType']) || empty($row['idDept'])) {
                     echo "⛔ Erreur : idType ou idDept manquant pour la ligne : " . json_encode($row) . "\n";
                     continue;
                 }
 
-                // Création de l'objet Valeur
+                // Creation de l'objet Valeur
                 $valeur = new Valeur(
                     $row['idValeur'] ?? null,
                     $row['nomRubrique'] ?? null,
@@ -181,7 +181,7 @@ class Valeur {
                 );
                 $valeurs[] = $valeur;
 
-                // Sauvegarde en base de données
+                // Sauvegarde en base de donnees
                 $valeur->insert();
             }
 

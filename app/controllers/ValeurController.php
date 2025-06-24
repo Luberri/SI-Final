@@ -21,51 +21,51 @@ class ValeurController
 
     public function doImportCSV()
     {
-        // On récupère le fichier CSV directement à partir de l'input
+        // On recupere le fichier CSV directement a partir de l'input
         $file = Flight::request()->files->filePath;
 
-        // Si un fichier a été trouvé
+        // Si un fichier a ete trouve
         if ($file) {
-            // On récupère le chemin temporaire du fichier téléchargé
+            // On recupere le chemin temporaire du fichier telecharge
             $file_path = $file['tmp_name'];
 
-            // Appel à la méthode dans la classe Valeur pour importer les données du fichier CSV
+            // Appel a la methode dans la classe Valeur pour importer les donnees du fichier CSV
             $valeurs = Valeur::getListeValeurFromCsv($file_path);
 
-            // Redirection ou retour après l'importation
+            // Redirection ou retour apres l'importation
             Flight::redirect('/budget');
         } else {
-            // Si le fichier n'a pas été trouvé ou téléchargé, on affiche une erreur
-            Flight::flash('error', 'Aucun fichier téléchargé.');
+            // Si le fichier n'a pas ete trouve ou telecharge, on affiche une erreur
+            Flight::flash('error', 'Aucun fichier telecharge.');
             Flight::redirect('/import');
         }
     }
 
     public function saveRealisation()
     {
-        // Récupérer les données du formulaire
+        // Recuperer les donnees du formulaire
         $nomRubrique = Flight::request()->data->nature;
         $idType = Flight::request()->data->type;
         $montant = Flight::request()->data->montant;
         $idDept = $_SESSION['idDept'];
         $date = Flight::request()->data->dateReal; // Date actuelle
-        $previsionOuRealisation = 1; // Réalisation (0)
-        $validation = 0; // Validé par défaut
+        $previsionOuRealisation = 1; // Realisation (0)
+        $validation = 0; // Valide par defaut
 
-        // Créer un objet Valeur
+        // Creer un objet Valeur
         $valeur = new Valeur(0, $nomRubrique, $idType, $previsionOuRealisation, $montant, $date, $validation, $idDept);
 
-        // Sauvegarder dans la base de données
+        // Sauvegarder dans la base de donnees
         if ($valeur->insert()) {
             Flight::redirect('budget');
         } else {
-            echo "Erreur lors de l'ajout de la réalisation.";
+            echo "Erreur lors de l'ajout de la realisation.";
         }
     }
 
     public function saveCRM()
     {
-        // Récupérer les données du formulaire
+        // Recuperer les donnees du formulaire
         $montant = Flight::request()->data->valeur;
         $idDeptAinserer = Flight::request()->data->idDept;
         $idDept = $_SESSION['idDept'];
@@ -90,7 +90,7 @@ class ValeurController
             $previsionOuRealisation = 1;
             $validation = 1;
 
-            // Sauvegarde dans la base de données
+            // Sauvegarde dans la base de donnees
             for ($i=0; $i < rand(1, 10); $i++) { 
                 $idProduit = rand(1,10);
                 $idClient = rand(1,8);
@@ -99,7 +99,7 @@ class ValeurController
                 // $minDate = (clone $today)->modify('+1 day');           // demain
                 // $maxDate = (clone $today)->modify('+3 months');        // dans 3 mois
 
-                // // Générer un timestamp aléatoire entre les deux
+                // // Generer un timestamp aleatoire entre les deux
                 // $timestampMin = $minDate->getTimestamp();
                 // $timestampMax = $maxDate->getTimestamp();
 
@@ -111,50 +111,50 @@ class ValeurController
                 $vente->save();
             }
 
-            // Créer un objet Valeur
+            // Creer un objet Valeur
             $valeur = new Valeur(0, $labelCRM, 7, $previsionOuRealisation, $montant, $date, $validation, $idDept);
 
-            // Sauvegarder dans la base de données
+            // Sauvegarder dans la base de donnees
             if ($valeur->insert()) {
                 Flight::redirect('budget');
             } else {
-                echo "Erreur lors de l'ajout de la réalisation.";
+                echo "Erreur lors de l'ajout de la realisation.";
             }
         } else {
             $previsionOuRealisation = 1;
             $validation = 0;
 
-            // Créer un objet Valeur
+            // Creer un objet Valeur
             $valeur = new Valeur(0, $labelCRM, 7, $previsionOuRealisation, $montant, $date, $validation, $idDept);
 
-            // Sauvegarder dans la base de données
+            // Sauvegarder dans la base de donnees
             if ($valeur->insert()) {
                 Flight::redirect('budget');
             } else {
-                echo "Erreur lors de l'ajout de la réalisation.";
+                echo "Erreur lors de l'ajout de la realisation.";
             }
         }
     }
 
     public function savePrevision()
     {
-        // Récupérer les données du formulaire
+        // Recuperer les donnees du formulaire
         $nomRubrique = Flight::request()->data->nature;
         $idType = Flight::request()->data->type;
         $montant = Flight::request()->data->montant;
         $idDept = $_SESSION['idDept'];
         $date = Flight::request()->data->datePrev; // Date actuelle
-        $previsionOuRealisation = 0; // Réalisation (0)
-        $validation = 0; // Validé par défaut
+        $previsionOuRealisation = 0; // Realisation (0)
+        $validation = 0; // Valide par defaut
 
-        // Créer un objet Valeur
+        // Creer un objet Valeur
         $valeur = new Valeur(0, $nomRubrique, $idType, $previsionOuRealisation, $montant, $date, $validation, $idDept);
 
-        // Sauvegarder dans la base de données
+        // Sauvegarder dans la base de donnees
         if ($valeur->insert()) {
             Flight::redirect('budget');
         } else {
-            echo "Erreur lors de l'ajout de la réalisation.";
+            echo "Erreur lors de l'ajout de la realisation.";
         }
     }
 }

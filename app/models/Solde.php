@@ -22,11 +22,11 @@ use DateTime;
             $stmt->execute([$idDept]);
             $solde = $stmt->fetch(\PDO::FETCH_ASSOC);
         
-            // Vérifier si un solde a été trouvé, sinon retourner 0
+            // Verifier si un solde a ete trouve, sinon retourner 0
             if ($solde) {
                 return $solde;
             } else {
-                return null;  // Valeur par défaut si aucun solde n'est trouvé
+                return null;  // Valeur par defaut si aucun solde n'est trouve
             }
         }
         public function getSolde($idDept, $dateAVoir) {
@@ -37,10 +37,10 @@ use DateTime;
             $start = new DateTime($dateDebut);
             $end = new DateTime($dateAVoir); // Ne pas modifier ici
         
-            // Créer l'intervalle d'un mois
+            // Creer l'intervalle d'un mois
             $interval = new DateInterval('P1M');
         
-            // Créer la période (exclusif de la date de fin)
+            // Creer la periode (exclusif de la date de fin)
             $period = new DatePeriod($start, $interval, $end);
         
             // Parcourir chaque mois

@@ -15,7 +15,7 @@ class Validation {
         try {
             $query = $this->db->prepare("UPDATE Valeur SET validation = 1 WHERE idValeur = $id");
             if ($query->execute()) {
-                return $query->rowCount() > 0; // Vérifie si une ligne a été mise à jour
+                return $query->rowCount() > 0; // Verifie si une ligne a ete mise a jour
             }
             return false;
         } catch (\PDOException $e) {
@@ -33,7 +33,7 @@ class Validation {
         try {
             $query = $this->db->prepare("UPDATE Valeur SET validation = 2 WHERE idValeur = $id");
             if ($query->execute()) {
-                return $query->rowCount() > 0; // Vérifie si une ligne a été mise à jour
+                return $query->rowCount() > 0; // Verifie si une ligne a ete mise a jour
             }
             return false;
         } catch (\PDOException $e) {

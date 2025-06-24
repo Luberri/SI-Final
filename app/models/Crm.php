@@ -25,7 +25,7 @@ class Crm {
         $this->label = $label;
     }
 
-    // Sauvegarde en base de données (insertion)
+    // Sauvegarde en base de donnees (insertion)
     public function save() {
         $conn = Flight::db();
         if ($this->idCrm === null) {
@@ -88,11 +88,11 @@ class Crm {
     public static function getResteCRMValue($idDept, $date) {
         $conn = Flight::db();
     
-        // Extraire mois et année de la date donnée
+        // Extraire mois et annee de la date donnee
         $mois = date('m', strtotime($date));
         $annee = date('Y', strtotime($date));
     
-        // Somme des prévisions validées du mois
+        // Somme des previsions validees du mois
         $stmtPrev = $conn->prepare("
             SELECT COALESCE(SUM(montant), 0) AS sommePrevision 
             FROM Valeur v 
@@ -108,7 +108,7 @@ class Crm {
         $stmtPrev->execute(['idDept' => $idDept, 'mois' => $mois, 'annee' => $annee]);
         $sommePrevision = $stmtPrev->fetchColumn();
     
-        // Somme des réalisations validées du mois
+        // Somme des realisations validees du mois
         $stmtRea = $conn->prepare("
             SELECT COALESCE(SUM(montant), 0) AS sommeRealisation 
             FROM Valeur v 

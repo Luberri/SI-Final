@@ -12,8 +12,8 @@ class Statistique {
     }
 
     /**
-     * Récupère les 5 meilleurs produits vendus
-     * @return array Tableau des meilleurs produits avec leur quantité totale vendue
+     * Recupere les 5 meilleurs produits vendus
+     * @return array Tableau des meilleurs produits avec leur quantite totale vendue
      */
     public function getBestProduct() {
         $query = "
@@ -30,8 +30,8 @@ class Statistique {
     }
 
     /**
-     * Récupère les clients les plus fidèles (plus gros acheteurs)
-     * @param int $limit Nombre de clients à retourner
+     * Recupere les clients les plus fideles (plus gros acheteurs)
+     * @param int $limit Nombre de clients a retourner
      * @return array
      */
     public function getTopCustomers() {
@@ -50,14 +50,14 @@ class Statistique {
     }
 
     /**
-     * Récupère les CRM qui ont le plus fonctionné et augmenté les ventes
-     * Note: Cette implémentation suppose que vous avez une logique pour lier les CRM aux ventes
-     * (par exemple via une table de liaison). Comme cette table n'est pas définie dans votre schéma,
-     * je fais une implémentation de base qui pourrait nécessiter des ajustements.
+     * Recupere les CRM qui ont le plus fonctionne et augmente les ventes
+     * Note: Cette implementation suppose que vous avez une logique pour lier les CRM aux ventes
+     * (par exemple via une table de liaison). Comme cette table n'est pas definie dans votre schema,
+     * je fais une implementation de base qui pourrait necessiter des ajustements.
      * @return array Tableau des CRM les plus efficaces
      */
     public function getBestCrm() {
-        // Implémentation de base - à adapter selon votre logique métier
+        // Implementation de base - a adapter selon votre logique metier
         $query = "
             SELECT c.idCrm, c.label, COUNT(v.idVente) as ventes_associees
             FROM Crm c
@@ -88,7 +88,7 @@ class Statistique {
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    // Version améliorée avec gestion des mois sans vente
+    // Version amelioree avec gestion des mois sans vente
     public function getSalesByMonth($year = null) {
         if ($year === null) {
             $year = date('Y');

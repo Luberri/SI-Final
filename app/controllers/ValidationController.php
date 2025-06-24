@@ -23,7 +23,7 @@ class ValidationController {
         if ($success) {
             Flight::redirect('/validation');
         } else {
-            Flight::halt(500, 'Erreur lors de la mise à jour de la validation. Vérifiez les logs pour plus de détails.');
+            Flight::halt(500, 'Erreur lors de la mise a jour de la validation. Verifiez les logs pour plus de details.');
         }
     }
 
@@ -34,7 +34,7 @@ class ValidationController {
         if ($success) {
             Flight::redirect('/validation');
         } else {
-            Flight::halt(500, 'Erreur lors de la mise à jour de la validation. Vérifiez les logs pour plus de détails.');
+            Flight::halt(500, 'Erreur lors de la mise a jour de la validation. Verifiez les logs pour plus de details.');
         }
     }
  

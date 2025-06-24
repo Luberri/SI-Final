@@ -18,12 +18,12 @@ class PdfController {
             die("Ne peut pas voir le budget");
         }   
 
-        // Vérifier si les dates sont valide
+        // Verifier si les dates sont valide
         if (!$dateDebut || !$dateFin) {
-            die("Veuillez spécifier une date de début et une date de fin.");
+            die("Veuillez specifier une date de debut et une date de fin.");
         }
 
-        // Récupérer les mois dans la période
+        // Recuperer les mois dans la periode
         $query = "SELECT DISTINCT YEAR(date) AS year, MONTH(date) AS month 
                   FROM Valeur 
                   WHERE validation = 1 
@@ -37,10 +37,10 @@ class PdfController {
         $periodes = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         if (empty($periodes)) {
-            die("Aucune donnée validée entre $dateDebut et $dateFin.");
+            die("Aucune donnee validee entre $dateDebut et $dateFin.");
         }
 
-        // Création du PDF
+        // Creation du PDF
         $pdf = new \FPDF();
         
         // Groupement par mois
@@ -50,7 +50,7 @@ class PdfController {
             $month = $periode['month'];
             $monthName = date("F Y", strtotime("$year-$month-01"));
 
-            // Récupérer les données pour ce mois spécifique
+            // Recuperer les donnees pour ce mois specifique
             $query = "
                 SELECT 
                     nomType, 
@@ -88,7 +88,7 @@ class PdfController {
             }
             $pdf->Ln();
 
-            // Affichage des données
+            // Affichage des donnees
             $pdf->SetFont('Arial', '', 12);
             foreach ($data as $row) {
                 $prevision = $row['prevision'] ?? 0;
@@ -103,7 +103,7 @@ class PdfController {
             }
         }
 
-        // Téléchargement du PDF
+        // Telechargement du PDF
         $pdf->Output('D', 'Rapport_Budgetaire.pdf');
     }
 }

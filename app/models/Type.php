@@ -13,7 +13,7 @@ class Type {
         $this->setIdType($idType);
         $this->setIdCategorie($idCategorie);
         $this->setNomType($nomType);
-        $this->conn = Flight::db();  // Connexion à la base de données
+        $this->conn = Flight::db();  // Connexion a la base de donnees
     }
 
     // Getters et Setters
@@ -53,7 +53,7 @@ class Type {
         return $types;
     }
 
-    // Méthode pour obtenir un type par son nom
+    // Methode pour obtenir un type par son nom
     public static function getTypeByName($nomType) {
         $sql = "SELECT * FROM Type WHERE nomType = ?";
         $conn = Flight::db();
@@ -68,7 +68,7 @@ class Type {
         return false;
     }
 
-    // Méthode pour obtenir un type par son ID
+    // Methode pour obtenir un type par son ID
     public static function getTypeById($idType) {
         $sql = "SELECT * FROM Type WHERE idType = ?";
         $conn = Flight::db();
@@ -88,11 +88,11 @@ class Type {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     
-        // Utiliser fetchAll() pour récupérer les résultats sous forme de tableau associatif
+        // Utiliser fetchAll() pour recuperer les resultats sous forme de tableau associatif
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
         if ($rows) {
-            return $rows; // Retourner directement le tableau de résultats
+            return $rows; // Retourner directement le tableau de resultats
         }
     
         return false;

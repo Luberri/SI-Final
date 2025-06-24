@@ -23,7 +23,7 @@
                     <div class="d-flex justify-content-end mb-3">
                         <form class="form-inline">
                             <div class="input-group">
-                                <label class="input-group-text" for="yearSelect">Année:</label>
+                                <label class="input-group-text" for="yearSelect">Annee:</label>
                                 <select class="form-select" id="yearSelect" onchange="changeYear(this.value)">
                                     <?php
                                     $currentYear = date('Y');
@@ -55,7 +55,7 @@
                         <thead>
                             <tr>
                                 <th>Produit</th>
-                                <th>Quantité Vendue</th>
+                                <th>Quantite Vendue</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,18 +102,18 @@
 </div>
 
 <script>
-    // Données pour le graphique
+    // Donnees pour le graphique
     const months = <?= $months ?>;
     const salesData = <?= $sales ?>;
 
-    // Création du graphique
+    // Creation du graphique
     const ctx = document.getElementById('salesChart').getContext('2d');
     const salesChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: months,
             datasets: [{
-                label: 'Quantité Vendue',
+                label: 'Quantite Vendue',
                 data: salesData,
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
@@ -128,7 +128,7 @@
                     beginAtZero: true,
                     title: {
                         display: true,
-                        text: 'Quantité Vendue'
+                        text: 'Quantite Vendue'
                     }
                 },
                 x: {
@@ -141,7 +141,7 @@
         }
     });
 
-    // Fonction pour changer l'année
+    // Fonction pour changer l'annee
     function changeYear(year) {
         window.location.href = '?year=' + year;
     }

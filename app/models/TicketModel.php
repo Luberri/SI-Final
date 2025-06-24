@@ -48,4 +48,10 @@ class TicketModel {
         $stmt = $this->db->query("SELECT idClient, nomClient FROM client");
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function ajoutTicketDolibarr($data)
+    {
+        $dolibarr = new \app\models\DolibarrModel();
+        return $dolibarr->createTicket($data);
+    }
 }

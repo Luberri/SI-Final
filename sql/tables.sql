@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS gestion;
 CREATE DATABASE IF NOT EXISTS gestion;
 
 USE gestion;
--- Création des tables
+-- Creation des tables
 CREATE TABLE Dept (
     idDept INT PRIMARY KEY AUTO_INCREMENT,
     nomDept VARCHAR(100) NOT NULL,

@@ -39,10 +39,12 @@
             <?php }
         ?>
         <a href="budget"><i class="fas fa-wallet"></i>Budget</a>
-        <a href="#"><i class="fas fa-building"></i>Département</a>
+        <a href="#"><i class="fas fa-building"></i>Departement</a>
         <a href="crm"><i class="fas fa-handshake"></i>CRM</a>
         <a href="chart"><i class="fas fa-building"></i>Chart</a>
         <a href="deco"><i class="fas fa-sign-out-alt"></i>Deconnexion</a>
+        <a href="ajoutTicket"><i class="fas fa-plus"></i>ajoutTicket</a>
+        
     </div>
 
     <main>

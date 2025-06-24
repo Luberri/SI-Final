@@ -1,4 +1,4 @@
--- Insertion de départements
+-- Insertion de departements
 INSERT INTO Dept (nomDept, mdp) VALUES 
 ('Finance', 'mdp123'),
 ('Ressources Humaines', 'mdp456'),
@@ -6,130 +6,130 @@ INSERT INTO Dept (nomDept, mdp) VALUES
 ('Marketing', 'mdp101'),
 ('Logistique', 'mdp102');
 
--- Insertion des relations de droits entre départements
+-- Insertion des relations de droits entre departements
 INSERT INTO Droit (idDeptPere, idDeptFils) VALUES 
-(1, 2),  -- Finance peut accéder à Ressources Humaines
-(1, 3),  -- Finance peut accéder à Informatique
-(1, 4),  -- Finance peut accéder à Marketing
-(1, 5),  -- Finance peut accéder à Logistique
+(1, 2),  -- Finance peut acceder a Ressources Humaines
+(1, 3),  -- Finance peut acceder a Informatique
+(1, 4),  -- Finance peut acceder a Marketing
+(1, 5),  -- Finance peut acceder a Logistique
 (1, 1),
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5);  -- Finance peut accéder à Logistique
-  -- Finance peut accéder à Logistique
-  -- Finance peut accéder à Logistique
-  -- Finance peut accéder à Logistique
-  -- Finance peut accéder à Logistique
+(5, 5);  -- Finance peut acceder a Logistique
+  -- Finance peut acceder a Logistique
+  -- Finance peut acceder a Logistique
+  -- Finance peut acceder a Logistique
+  -- Finance peut acceder a Logistique
 
--- (2, 3),  -- Ressources Humaines peut accéder à Informatique
--- (2, 4),  -- Ressources Humaines peut accéder à Marketing
--- (3, 5);  -- Informatique peut accéder à Logistique
+-- (2, 3),  -- Ressources Humaines peut acceder a Informatique
+-- (2, 4),  -- Ressources Humaines peut acceder a Marketing
+-- (3, 5);  -- Informatique peut acceder a Logistique
 
--- Insertion de catégories (recettes et dépenses)
+-- Insertion de categories (recettes et depenses)
 INSERT INTO Categorie (nomCategorie, recetteOuDepense) VALUES 
-('Salaires', 0),  -- Dépense
-('Achats', 0),    -- Dépense
+('Salaires', 0),  -- Depense
+('Achats', 0),    -- Depense
 ('Ventes', 1),    -- Recette
-('Publicité', 1), -- Recette
-('Investissements', 0),  -- Dépense
-('Entretien', 0), -- Dépense
-('CRM', 0);  -- Dépense
+('Publicite', 1), -- Recette
+('Investissements', 0),  -- Depense
+('Entretien', 0), -- Depense
+('CRM', 0);  -- Depense
 
--- Insertion de types associés à chaque catégorie
+-- Insertion de types associes a chaque categorie
 INSERT INTO Type (idCategorie, nomType) VALUES 
-(1, 'Rémunération'),      -- Type pour "Salaires"
+(1, 'Remuneration'),      -- Type pour "Salaires"
 (2, 'Fournitures'),       -- Type pour "Achats"
 (3, 'Produits vendus'),   -- Type pour "Ventes"
-(4, 'Campagnes pub'),     -- Type pour "Publicité"
-(5, 'Achat matériel'),    -- Type pour "Investissements"
+(4, 'Campagnes pub'),     -- Type pour "Publicite"
+(5, 'Achat materiel'),    -- Type pour "Investissements"
 (6, 'Maintenance'),       -- Type pour "Entretien"
-(7,'Reaction CRM');  -- Dépense
+(7,'Reaction CRM');  -- Depense
 
--- Département Finance
+-- Departement Finance
 INSERT INTO Valeur (nomRubrique, idType, idDept, previsionOuRealisation, montant, date, validation) VALUES 
 -- Paiement des salaires
-('Paiement des salaires', 1, 1, 0, 5200000, '2025-03-01', 0),  -- Prévision
-('Paiement des salaires', 1, 1, 1, 5000000, '2025-03-01', 1),  -- Réalisation
+('Paiement des salaires', 1, 1, 0, 5200000, '2025-03-01', 0),  -- Prevision
+('Paiement des salaires', 1, 1, 1, 5000000, '2025-03-01', 1),  -- Realisation
 
 -- Achat de fournitures
-('Achat de fournitures', 2, 1, 0, 150000, '2025-03-02', 0),    -- Prévision
-('Achat de fournitures', 2, 1, 1, 130000, '2025-03-03', 1),    -- Réalisation
+('Achat de fournitures', 2, 1, 0, 150000, '2025-03-02', 0),    -- Prevision
+('Achat de fournitures', 2, 1, 1, 130000, '2025-03-03', 1),    -- Realisation
 
--- Investissements en équipements
-('Investissements en équipements', 5, 1, 0, 2000000, '2025-03-03', 0),  -- Prévision
-('Investissements en équipements', 5, 1, 1, 1800000, '2025-03-10', 1),  -- Réalisation
+-- Investissements en equipements
+('Investissements en equipements', 5, 1, 0, 2000000, '2025-03-03', 0),  -- Prevision
+('Investissements en equipements', 5, 1, 1, 1800000, '2025-03-10', 1),  -- Realisation
 
 -- Recette de vente de services
-('Recette de vente de services', 3, 1, 0, 8500000, '2025-03-04', 0),  -- Prévision
-('Recette de vente de services', 3, 1, 1, 8000000, '2025-03-05', 1);  -- Réalisation
+('Recette de vente de services', 3, 1, 0, 8500000, '2025-03-04', 0),  -- Prevision
+('Recette de vente de services', 3, 1, 1, 8000000, '2025-03-05', 1);  -- Realisation
 
--- Département Ressources Humaines
+-- Departement Ressources Humaines
 INSERT INTO Valeur (nomRubrique, idType, idDept, previsionOuRealisation, montant, date, validation) VALUES 
--- Salaire employés
-('Salaire employés', 1, 2, 0, 4200000, '2025-03-01', 0),  -- Prévision
-('Salaire employés', 1, 2, 1, 4000000, '2025-03-01', 1),  -- Réalisation
+-- Salaire employes
+('Salaire employes', 1, 2, 0, 4200000, '2025-03-01', 0),  -- Prevision
+('Salaire employes', 1, 2, 1, 4000000, '2025-03-01', 1),  -- Realisation
 
 -- Achat de fournitures de bureau
-('Achat de fournitures de bureau', 2, 2, 0, 100000, '2025-03-04', 0),  -- Prévision
-('Achat de fournitures de bureau', 2, 2, 1, 95000, '2025-03-06', 1),   -- Réalisation
+('Achat de fournitures de bureau', 2, 2, 0, 100000, '2025-03-04', 0),  -- Prevision
+('Achat de fournitures de bureau', 2, 2, 1, 95000, '2025-03-06', 1),   -- Realisation
 
 -- Recette de formation
-('Recette de formation', 3, 2, 0, 2100000, '2025-03-07', 0),  -- Prévision
-('Recette de formation', 3, 2, 1, 2000000, '2025-03-08', 1);  -- Réalisation
+('Recette de formation', 3, 2, 0, 2100000, '2025-03-07', 0),  -- Prevision
+('Recette de formation', 3, 2, 1, 2000000, '2025-03-08', 1);  -- Realisation
 
--- Département Informatique
+-- Departement Informatique
 INSERT INTO Valeur (nomRubrique, idType, idDept, previsionOuRealisation, montant, date, validation) VALUES 
 -- Salaire du personnel informatique
-('Salaire du personnel informatique', 1, 3, 0, 6100000, '2025-03-01', 0),  -- Prévision
-('Salaire du personnel informatique', 1, 3, 1, 6000000, '2025-03-01', 1),  -- Réalisation
+('Salaire du personnel informatique', 1, 3, 0, 6100000, '2025-03-01', 0),  -- Prevision
+('Salaire du personnel informatique', 1, 3, 1, 6000000, '2025-03-01', 1),  -- Realisation
 
--- Achat de matériel informatique
-('Achat de matériel informatique', 2, 3, 0, 1200000, '2025-03-02', 0),  -- Prévision
-('Achat de matériel informatique', 2, 3, 1, 1150000, '2025-03-05', 1),  -- Réalisation
+-- Achat de materiel informatique
+('Achat de materiel informatique', 2, 3, 0, 1200000, '2025-03-02', 0),  -- Prevision
+('Achat de materiel informatique', 2, 3, 1, 1150000, '2025-03-05', 1),  -- Realisation
 
 -- Recette vente de logiciels
-('Recette vente de logiciels', 3, 3, 0, 5500000, '2025-03-06', 0),  -- Prévision
-('Recette vente de logiciels', 3, 3, 1, 5000000, '2025-03-07', 1);  -- Réalisation
+('Recette vente de logiciels', 3, 3, 0, 5500000, '2025-03-06', 0),  -- Prevision
+('Recette vente de logiciels', 3, 3, 1, 5000000, '2025-03-07', 1);  -- Realisation
 
--- Département Marketing
+-- Departement Marketing
 INSERT INTO Valeur (nomRubrique, idType, idDept, previsionOuRealisation, montant, date, validation) VALUES 
--- Publicité sur réseaux sociaux
-('Publicité sur réseaux sociaux', 4, 4, 0, 300000, '2025-03-05', 0),  -- Prévision
-('Publicité sur réseaux sociaux', 4, 4, 1, 280000, '2025-03-08', 1),  -- Réalisation
+-- Publicite sur reseaux sociaux
+('Publicite sur reseaux sociaux', 4, 4, 0, 300000, '2025-03-05', 0),  -- Prevision
+('Publicite sur reseaux sociaux', 4, 4, 1, 280000, '2025-03-08', 1),  -- Realisation
 
--- Recette publicité en ligne
-('Recette publicité en ligne', 3, 4, 0, 2100000, '2025-03-09', 0),  -- Prévision
-('Recette publicité en ligne', 3, 4, 1, 2000000, '2025-03-10', 1);  -- Réalisation
+-- Recette publicite en ligne
+('Recette publicite en ligne', 3, 4, 0, 2100000, '2025-03-09', 0),  -- Prevision
+('Recette publicite en ligne', 3, 4, 1, 2000000, '2025-03-10', 1);  -- Realisation
 
--- Département Logistique
+-- Departement Logistique
 INSERT INTO Valeur (nomRubrique, idType, idDept, previsionOuRealisation, montant, date, validation) VALUES 
--- Investissement en matériel logistique
-('Investissement en matériel logistique', 5, 5, 0, 1000000, '2025-03-02', 0),  -- Prévision
-('Investissement en matériel logistique', 5, 5, 1, 950000, '2025-03-09', 1),  -- Réalisation
+-- Investissement en materiel logistique
+('Investissement en materiel logistique', 5, 5, 0, 1000000, '2025-03-02', 0),  -- Prevision
+('Investissement en materiel logistique', 5, 5, 1, 950000, '2025-03-09', 1),  -- Realisation
 
--- Entretien des équipements
-('Entretien des équipements', 6, 5, 0, 500000, '2025-03-06', 0),  -- Prévision
-('Entretien des équipements', 6, 5, 1, 480000, '2025-03-08', 1),  -- Réalisation
+-- Entretien des equipements
+('Entretien des equipements', 6, 5, 0, 500000, '2025-03-06', 0),  -- Prevision
+('Entretien des equipements', 6, 5, 1, 480000, '2025-03-08', 1),  -- Realisation
 
 -- Recette livraison de produits
-('Recette livraison de produits', 3, 5, 0, 4200000, '2025-03-09', 0),  -- Prévision
-('Recette livraison de produits', 3, 5, 1, 4000000, '2025-03-10', 1);  -- Réalisation
+('Recette livraison de produits', 3, 5, 0, 4200000, '2025-03-09', 0),  -- Prevision
+('Recette livraison de produits', 3, 5, 1, 4000000, '2025-03-10', 1);  -- Realisation
 
--- Insertion des soldes initiaux pour les départements
+-- Insertion des soldes initiaux pour les departements
 INSERT INTO soldeInitial (idDept, montant, dateInsertion) VALUES
-(1, 1000000.00, '2025-01-01'),  -- Solde initial pour le département Finance
-(2, 500000.00, '2025-01-01'),   -- Solde initial pour le département Ressources Humaines
-(3, 1500000.00, '2025-01-01');  -- Solde initial pour le département Informatique
+(1, 1000000.00, '2025-01-01'),  -- Solde initial pour le departement Finance
+(2, 500000.00, '2025-01-01'),   -- Solde initial pour le departement Ressources Humaines
+(3, 1500000.00, '2025-01-01');  -- Solde initial pour le departement Informatique
 
 INSERT INTO produit (nomProduit, prix, stock) VALUES
 ('Ballon de football', 25000.00, 50),
 ('Raquette de tennis', 85000.00, 20),
 ('Tapis de yoga', 30000.00, 40),
-('Haltères 10kg', 40000.00, 30),
+('Halteres 10kg', 40000.00, 30),
 ('Chaussures de course', 120000.00, 25),
 ('Gants de boxe', 45000.00, 15),
-('Casque de vélo', 60000.00, 10),
+('Casque de velo', 60000.00, 10),
 ('Maillot de sport', 20000.00, 60),
 ('Sac de sport', 35000.00, 35),
 ('Filet de volley', 50000.00, 12);
@@ -241,23 +241,23 @@ CREATE TABLE Ticket (
     idClient INT NOT NULL,
     FOREIGN KEY (idClient) REFERENCES client(idClient)
 );
--- Données de test pour Ticket et Historique_Ticket
+-- Donnees de test pour Ticket et Historique_Ticket
 
--- Tickets pour 3 clients différents
+-- Tickets pour 3 clients differents
 INSERT INTO Ticket (idClient) VALUES (1); -- idTicket = 1
 INSERT INTO Ticket (idClient) VALUES (2); -- idTicket = 2
 INSERT INTO Ticket (idClient) VALUES (3); -- idTicket = 3
 
--- Historique pour chaque ticket avec différentes priorités et statuts
+-- Historique pour chaque ticket avec differentes priorites et statuts
 INSERT INTO Historique_Ticket (idTicket, instruction, date, priorite, statut, action) VALUES
-(1, 'Problème de connexion à la plateforme', '2025-04-10 09:00:00', 'haute', 'ouvert', 'création'),
+(1, 'Probleme de connexion a la plateforme', '2025-04-10 09:00:00', 'haute', 'ouvert', 'creation'),
 (1, 'Ticket pris en charge par le support', '2025-04-10 10:00:00', 'haute', 'ouvert', 'modification'),
-(1, 'Problème résolu, ticket fermé', '2025-04-10 11:00:00', 'haute', 'ferme', 'fermeture'),
+(1, 'Probleme resolu, ticket ferme', '2025-04-10 11:00:00', 'haute', 'ferme', 'fermeture'),
 
-(2, 'Demande de mise à jour de profil', '2025-04-11 14:30:00', 'moyenne', 'ouvert', 'création'),
-(2, 'Mise à jour effectuée', '2025-04-11 15:00:00', 'moyenne', 'ferme', 'fermeture'),
+(2, 'Demande de mise a jour de profil', '2025-04-11 14:30:00', 'moyenne', 'ouvert', 'creation'),
+(2, 'Mise a jour effectuee', '2025-04-11 15:00:00', 'moyenne', 'ferme', 'fermeture'),
 
-(3, 'Question sur la facturation', '2025-04-12 08:20:00', 'basse', 'ouvert', 'création');
+(3, 'Question sur la facturation', '2025-04-12 08:20:00', 'basse', 'ouvert', 'creation');
 CREATE TABLE Historique_Ticket (
     idHistorique INT PRIMARY KEY AUTO_INCREMENT,
     idTicket INT NOT NULL,
@@ -265,15 +265,15 @@ CREATE TABLE Historique_Ticket (
     date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     priorite ENUM('basse', 'moyenne', 'haute') NOT NULL,
     statut ENUM('ouvert', 'ferme') NOT NULL,
-    action VARCHAR(50) NOT NULL, -- ex: 'création', 'modification', 'fermeture'
+    action VARCHAR(50) NOT NULL, -- ex: 'creation', 'modification', 'fermeture'
     FOREIGN KEY (idTicket) REFERENCES Ticket(idTicket)
 ); 
 
--- Insertion de ventes pour différents mois
+-- Insertion de ventes pour differents mois
 -- INSERT INTO vente (idProduit, idClient, dateVente, quantite) VALUES
 -- (1, 1, '2025-01-15', 2),  -- Janvier
 -- (3, 2, '2025-01-20', 1),
--- (5, 3, '2025-02-05', 1),  -- Février
+-- (5, 3, '2025-02-05', 1),  -- Fevrier
 -- (4, 1, '2025-02-10', 2),
 -- (2, 4, '2025-03-07', 1),  -- Mars
 -- (6, 5, '2025-03-08', 1),
@@ -293,6 +293,6 @@ CREATE TABLE Historique_Ticket (
 -- (10, 6, '2025-10-09', 1),
 -- (1, 7, '2025-11-11', 1),  -- Novembre
 -- (2, 8, '2025-11-15', 3),
--- (3, 1, '2025-12-20', 1),  -- Décembre
+-- (3, 1, '2025-12-20', 1),  -- Decembre
 -- (4, 2, '2025-12-25', 2);
 

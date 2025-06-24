@@ -24,4 +24,48 @@ class TicketController {
             'page' => 'ticket_search'
         ]);
     }
+
+    public function ajoutTicket()
+    {
+        if (Flight::request()->method == 'POST') {
+            $data = [
+                'type_demande' => Flight::request()->data->type_demande,
+                'severite'     => Flight::request()->data->severite,
+                'sujet'        => Flight::request()->data->sujet,
+                'message'      => Flight::request()->data->message,
+                'tiers'        => Flight::request()->data->tiers,
+                'assigne'      => Flight::request()->data->assigne,
+            ];
+            $model = new \app\models\TicketModel();
+            $model->ajoutTicketDolibarr($data);
+             $dolibarr = new \app\models\DolibarrModel();
+            $tiers = $dolibarr->getTiers(); // Liste des clients/tiers Dolibarr
+            $users = $dolibarr->getUsers(); // Liste des utilisateurs Dolibarr
+            Flight::render('template', [
+                'page' => 'ticket_add',
+                'users' => $users,
+                'tiers' => $tiers
+                
+            ]);
+        } else {
+            $dolibarr = new \app\models\DolibarrModel();
+            $tiers = $dolibarr->getTiers(); // Liste des clients/tiers Dolibarr
+            $users = $dolibarr->getUsers(); // Liste des utilisateurs Dolibarr
+            Flight::render('template', [
+                'page' => 'ticket_add',
+                'users' => $users,
+                'tiers' => $tiers
+                
+            ]);
+        }
+    }
+
+    public function listeTickets() {
+        $ticket = new \app\models\TicketModel();
+        $tickets = $ticket->search(); // récupère tous les tickets
+        Flight::render('template', [
+            'tickets' => $tickets,
+            'page' => 'ticket_list'
+        ]);
+    }
 }

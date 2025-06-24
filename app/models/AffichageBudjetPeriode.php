@@ -29,14 +29,14 @@ class AffichageBudjetPeriode {
         $start = new DateTime($dateDeb);
         $end = new DateTime($dateFin);
 
-        // Se placer au début du mois suivant si la date de départ n'est pas le 1er
+        // Se placer au debut du mois suivant si la date de depart n'est pas le 1er
         if ($start->format('d') != '01') {
             $start->modify('first day of next month');
         }
 
-        // Boucle tant que la date de début est avant la date de fin
+        // Boucle tant que la date de debut est avant la date de fin
         while ($start <= $end) {
-            $dates[] = $start->format('Y-m-d'); // Ajouter le début du mois à la liste
+            $dates[] = $start->format('Y-m-d'); // Ajouter le debut du mois a la liste
             $start->modify('first day of next month'); // Passer au mois suivant
         }
 
@@ -69,7 +69,7 @@ class AffichageBudjetPeriode {
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-            return ['error' => 'Erreur de base de données: ' . $e->getMessage()];
+            return ['error' => 'Erreur de base de donnees: ' . $e->getMessage()];
         }
     }
 
@@ -99,7 +99,7 @@ class AffichageBudjetPeriode {
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-            return ['error' => 'Erreur de base de données: ' . $e->getMessage()];
+            return ['error' => 'Erreur de base de donnees: ' . $e->getMessage()];
         }
     }
 
@@ -144,7 +144,7 @@ class AffichageBudjetPeriode {
                   AND MONTH(Valeur.date) = :mois 
                 GROUP BY Valeur.idType, Type.nomType";
 
-        // Paramètres pour la requête
+        // Parametres pour la requête
         $params = [
             ':idDept' => $idDept,
             ':annee' => $annee,
@@ -176,18 +176,18 @@ class AffichageBudjetPeriode {
               AND YEAR(Valeur.date) = :annee 
               AND MONTH(Valeur.date) = :mois";
 
-        // Paramètres pour la requête
+        // Parametres pour la requête
         $params = [
             ':idDept' => $idDept,
             ':annee' => $annee,
             ':mois' => $mois
         ];
 
-        // Préparer et exécuter la requête
+        // Preparer et executer la requête
         $stmt = Flight::db()->prepare($sql);
         $stmt->execute($params);
 
-        // Retourner les résultats sous forme de tableau associatif
+        // Retourner les resultats sous forme de tableau associatif
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 }
